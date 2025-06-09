@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: netflix-clone
+  name: netflix-deployment
+  labels:
+    app: netflix-app
 spec:
-  replicas: 2
+  replicas: 2   # You can scale this number
   selector:
     matchLabels:
-      app: netflix
+      app: netflix-app
   template:
     metadata:
       labels:
-        app: netflix
+        app: netflix-app
     spec:
       containers:
-      - name: netflix-container
-        image: yourusername/netflix-clone:latest   # Replace with your Docker Hub repo/image
-        ports:
-        - containerPort: 80
+        - name: netflix-container
+          image: mike4466/netflix-clone:latest
+          ports:
+            - containerPort: 3000  # Change if your app uses a different port
