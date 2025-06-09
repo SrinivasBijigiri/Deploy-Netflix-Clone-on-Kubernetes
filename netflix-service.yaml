@@ -5,9 +5,8 @@ metadata:
 spec:
   selector:
     app: netflix-app
-  type: NodePort   # You can use LoadBalancer if in cloud
+  type: LoadBalancer  # This will provision an external IP
   ports:
     - protocol: TCP
-      port: 80        # External port
-      targetPort: 3000 # Pod container port
-      nodePort: 30036 # Kubernetes will expose this on the node’s IP
+      port: 80          # Accessible port in browser
+      targetPort: 3000  # Container port
